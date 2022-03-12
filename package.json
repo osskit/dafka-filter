@@ -1,0 +1,16 @@
+{
+  "name": "dafka-filter",
+  "version": "0.1.22",
+  "description": "Dockerized Filter Kafka Stream",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/osskit/dafka-filter.git"
+  },
+  "author": "osskit",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/osskit/dafka-filter/issues"
+  },
+  "homepage": "https://github.com/osskit/dafka-filter#readme"
+}

@@ -1,0 +1,43 @@
+plugins {
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
+    id 'java'
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+application {
+    mainClassName = 'service.Main'
+}
+
+test {
+	useJUnitPlatform()
+	testLogging {
+		events "passed", "skipped", "failed"
+	}
+}
+
+sourceCompatibility = 11
+targetCompatibility = 11
+
+dependencies {
+    compile group: 'org.apache.kafka', name: 'kafka-clients', version: '2.8.0'
+    compile group: 'org.apache.kafka', name: 'kafka-streams', version: '2.8.0'
+    compile group: 'io.github.cdimascio', name: 'java-dotenv', version: '3.1.7'
+    compile group: 'org.json', name: 'json', version: '20180130'
+    compile group: 'io.prometheus', name: 'simpleclient', version: '0.8.0'
+    compile group: 'io.prometheus', name: 'simpleclient_httpserver', version: '0.8.0'
+    compile group: 'io.prometheus', name: 'simpleclient_hotspot', version: '0.8.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    testImplementation group: 'org.apache.kafka', name: 'kafka-streams-test-utils', version: '2.8.0'
+    testImplementation 'org.hamcrest:hamcrest:2.2'
+    testImplementation 'io.github.origin-energy:java-snapshot-testing-junit5:3.2.+'
+    testImplementation 'io.github.origin-energy:java-snapshot-testing-plugin-jackson:3.2.+'
+    testImplementation 'com.fasterxml.jackson.core:jackson-core:2.11.3'
+    testImplementation 'com.fasterxml.jackson.core:jackson-databind:2.11.3'
+    testImplementation 'com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.11.3'
+    testImplementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.11.3'
+}

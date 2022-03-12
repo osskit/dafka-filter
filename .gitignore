@@ -1,0 +1,9 @@
+.env
+.gradle
+bin
+node_modules
+yarn-error.log
+build
+.vscode
+charts
+Chart.lock
