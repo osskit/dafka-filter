@@ -34,10 +34,10 @@ public class Stream {
                         .map(s -> s.split(":"))
                         .map(s -> new Filter(s[0], s[1].substring(0, 2), s[1].substring(2)))
                         .map(filter -> {
-                            if (filter.operator == Operator.Equals) {
-                                return value.at(filter.path).asText().equals(filter.value);
-                            } else if (filter.operator == Operator.NotEquals) {
-                                return !value.at(filter.path).asText().equals(filter.value);
+                            if (filter.operator == Operator.Matches) {
+                                return value.at(filter.path).asText().matches(filter.value);
+                            } else if (filter.operator == Operator.NotMatches) {
+                                return !value.at(filter.path).asText().matches(filter.value);
                             } else {
                                 return false;
                             }
@@ -56,15 +56,15 @@ class Filter {
     public Filter(String path, String operator, String value) {
         this.path = path;
         if (operator.equals("==")) {
-            this.operator = Operator.Equals;
+            this.operator = Operator.Matches;
         } else if (operator.equals("!=")) {
-            this.operator = Operator.NotEquals;
+            this.operator = Operator.NotMatches;
         }
         this.value = value;
     }
 }
 
 enum Operator {
-    Equals,
-    NotEquals
+    Matches,
+    NotMatches,
 }
