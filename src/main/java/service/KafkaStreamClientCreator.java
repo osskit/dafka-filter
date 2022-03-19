@@ -44,6 +44,7 @@ class KafkaStreamClientCreator {
 
         props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, Config.KAFKA_BROKER);
         props.put(StreamsConfig.APPLICATION_ID_CONFIG, Config.APPLICATION_ID_CONFIG);
+        props.put("internal.leave.group.on.close", "true");
 
         return new KafkaStreams(topology, props);
     }
